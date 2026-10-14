@@ -3,18 +3,22 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth.jsx';
 
 export default function LoginPage() {
-  const { login } = useAuth();
+  const { login, register } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [isRegisterMode, setIsRegisterMode] = useState(false);
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('admin@smartstock.in');
   const [password, setPassword] = useState('Admin@123');
+  const [role, setRole] = useState('admin');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [nameError, setNameError] = useState('');
   const [activeState, setActiveState] = useState('normal');
 
   const redirectPath = location.state?.from?.pathname || '/dashboard';
@@ -23,14 +27,19 @@ export default function LoginPage() {
     let valid = true;
     setEmailError('');
     setPasswordError('');
+    setNameError('');
     setErrorMessage('');
 
+    if (isRegisterMode && (!name || name.trim().length < 2)) {
+      setNameError('Please enter your full name.');
+      valid = false;
+    }
     if (!email || !email.includes('@')) {
       setEmailError('Please enter a valid business email address.');
       valid = false;
     }
-    if (!password) {
-      setPasswordError('Password cannot be blank.');
+    if (!password || password.length < 4) {
+      setPasswordError('Password must be at least 4 characters.');
       valid = false;
     }
     return valid;
@@ -42,7 +51,11 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-      await login(email, password);
+      if (isRegisterMode) {
+        await register({ name, email, password, role });
+      } else {
+        await login(email, password);
+      }
       navigate(redirectPath, { replace: true });
     } catch (err) {
       setErrorMessage(err.message || 'Authentication failed. Please check credentials.');
@@ -51,11 +64,13 @@ export default function LoginPage() {
     }
   };
 
-  // Demo QA / Verification state pills from original Stitch design
+  // Demo QA / Verification state pills
   const applyState = (stateName) => {
+    setIsRegisterMode(false);
     setActiveState(stateName);
     setEmailError('');
     setPasswordError('');
+    setNameError('');
     setErrorMessage('');
 
     if (stateName === 'normal') {
@@ -88,7 +103,7 @@ export default function LoginPage() {
           <div className="lg:col-span-7 p-6 sm:p-10 md:p-12 flex flex-col justify-between bg-surface-container-lowest">
             <div>
               {/* Brand Identity */}
-              <div className="flex items-center gap-2.5 mb-8">
+              <div className="flex items-center gap-2.5 mb-6">
                 <div className="w-9 h-9 rounded bg-primary flex items-center justify-center text-on-primary shadow-sm">
                   <span className="material-symbols-outlined text-[20px]">inventory_2</span>
                 </div>
@@ -102,11 +117,52 @@ export default function LoginPage() {
                 </div>
               </div>
 
+              {/* Mode Switcher Tabs */}
+              <div className="flex items-center gap-1 p-1 bg-surface-container-low rounded-lg mb-6 w-fit">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsRegisterMode(false);
+                    setEmail('admin@smartstock.in');
+                    setPassword('Admin@123');
+                    setErrorMessage('');
+                  }}
+                  className={`px-4 py-1.5 rounded-md font-label-md font-medium text-sm transition-all ${
+                    !isRegisterMode
+                      ? 'bg-surface-container-lowest text-primary font-semibold shadow-xs'
+                      : 'text-secondary hover:text-on-surface'
+                  }`}
+                >
+                  Sign In
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsRegisterMode(true);
+                    setName('');
+                    setEmail('');
+                    setPassword('');
+                    setErrorMessage('');
+                  }}
+                  className={`px-4 py-1.5 rounded-md font-label-md font-medium text-sm transition-all ${
+                    isRegisterMode
+                      ? 'bg-surface-container-lowest text-primary font-semibold shadow-xs'
+                      : 'text-secondary hover:text-on-surface'
+                  }`}
+                >
+                  Create New Account
+                </button>
+              </div>
+
               {/* Heading */}
               <div className="space-y-1 mb-6">
-                <h1 className="font-headline-lg text-headline-lg text-on-surface font-bold">Welcome back</h1>
+                <h1 className="font-headline-lg text-headline-lg text-on-surface font-bold">
+                  {isRegisterMode ? 'Create your account' : 'Welcome back'}
+                </h1>
                 <p className="font-body-sm text-body-sm text-secondary">
-                  Sign in to manage your inventory and sales operations.
+                  {isRegisterMode
+                    ? 'Register your business profile to start managing stock & POS.'
+                    : 'Sign in to manage your inventory and sales operations.'}
                 </p>
               </div>
 
@@ -115,7 +171,7 @@ export default function LoginPage() {
                 <div className="mb-5 p-3 rounded bg-error-container text-on-error-container flex items-start gap-2.5 transition-all">
                   <span className="material-symbols-outlined text-[18px] text-error flex-shrink-0 mt-0.5">error</span>
                   <div className="flex-1">
-                    <p className="font-label-sm text-label-sm font-semibold">Authentication failed</p>
+                    <p className="font-label-sm text-label-sm font-semibold">Authentication Alert</p>
                     <p className="font-caption text-caption text-on-surface-variant">{errorMessage}</p>
                   </div>
                   <button 
@@ -130,17 +186,46 @@ export default function LoginPage() {
 
               {/* Form */}
               <form className="space-y-4" onSubmit={handleSubmit}>
+                {/* Full Name Field (Register Mode Only) */}
+                {isRegisterMode && (
+                  <div className="space-y-1.5">
+                    <label className="block font-label-sm text-label-sm text-on-surface-variant" htmlFor="name-input">
+                      Full Name *
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full h-10 px-3.5 pr-10 rounded bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline outline-none transition-shadow duration-150 focus:shadow-[0_0_0_2px_#10b981]"
+                        id="name-input"
+                        name="name"
+                        placeholder="e.g. Mayank Sharma"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      <span className="material-symbols-outlined absolute right-3 top-2.5 text-outline text-[20px] pointer-events-none">
+                        person
+                      </span>
+                    </div>
+                    {nameError && (
+                      <p className="font-caption text-caption text-error flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[14px]">info</span>
+                        {nameError}
+                      </p>
+                    )}
+                  </div>
+                )}
+
                 {/* Email Field */}
                 <div className="space-y-1.5">
                   <label className="block font-label-sm text-label-sm text-on-surface-variant" htmlFor="email-input">
-                    Work Email
+                    Work Email *
                   </label>
                   <div className="relative">
                     <input
                       className="w-full h-10 px-3.5 pr-10 rounded bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline outline-none transition-shadow duration-150 focus:shadow-[0_0_0_2px_#10b981]"
                       id="email-input"
                       name="email"
-                      placeholder="admin@smartstock.in"
+                      placeholder={isRegisterMode ? "you@company.in" : "admin@smartstock.in"}
                       type="text"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -160,7 +245,7 @@ export default function LoginPage() {
                 {/* Password Field */}
                 <div className="space-y-1.5">
                   <label className="block font-label-sm text-label-sm text-on-surface-variant" htmlFor="password-input">
-                    Password
+                    Password *
                   </label>
                   <div className="relative">
                     <input
@@ -191,25 +276,62 @@ export default function LoginPage() {
                   )}
                 </div>
 
+                {/* Role Selector (Register Mode Only) */}
+                {isRegisterMode && (
+                  <div className="space-y-1.5">
+                    <label className="block font-label-sm text-label-sm text-on-surface-variant">
+                      Account Access Role
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setRole('admin')}
+                        className={`p-2.5 rounded-lg border text-left flex flex-col transition ${
+                          role === 'admin'
+                            ? 'border-primary bg-primary/10 text-primary font-semibold'
+                            : 'border-outline-variant/30 bg-surface-container-low text-secondary'
+                        }`}
+                      >
+                        <span className="text-xs font-bold">Store Admin</span>
+                        <span className="text-[11px] text-secondary">Full control & analytics</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setRole('staff')}
+                        className={`p-2.5 rounded-lg border text-left flex flex-col transition ${
+                          role === 'staff'
+                            ? 'border-primary bg-primary/10 text-primary font-semibold'
+                            : 'border-outline-variant/30 bg-surface-container-low text-secondary'
+                        }`}
+                      >
+                        <span className="text-xs font-bold">Billing Staff</span>
+                        <span className="text-[11px] text-secondary">POS register & sales</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+
                 {/* Utilities Row: Remember Me & Forgot Password */}
-                <div className="flex items-center justify-between pt-1">
-                  <label className="flex items-center gap-2 cursor-pointer select-none">
-                    <input
-                      checked={rememberMe}
-                      onChange={(e) => setRememberMe(e.target.checked)}
-                      className="w-4 h-4 rounded text-primary-container accent-primary-container cursor-pointer"
-                      type="checkbox"
-                    />
-                    <span className="font-body-sm text-body-sm text-on-surface-variant">Remember me for 30 days</span>
-                  </label>
-                  <button 
-                    type="button"
-                    onClick={() => alert('Demo Reset: Use admin@smartstock.in / Admin@123 or staff@smartstock.in / Staff@123')}
-                    className="font-label-sm text-label-sm text-primary hover:text-on-primary-container font-medium transition-colors"
-                  >
-                    Forgot password?
-                  </button>
-                </div>
+                {!isRegisterMode && (
+                  <div className="flex items-center justify-between pt-1">
+                    <label className="flex items-center gap-2 cursor-pointer select-none">
+                      <input
+                        checked={rememberMe}
+                        onChange={(e) => setRememberMe(e.target.checked)}
+                        className="w-4 h-4 rounded text-primary-container accent-primary-container cursor-pointer"
+                        type="checkbox"
+                      />
+                      <span className="font-body-sm text-body-sm text-on-surface-variant">Remember me for 30 days</span>
+                    </label>
+                    <button 
+                      type="button"
+                      onClick={() => alert('Demo Reset: Use admin@smartstock.in / Admin@123 or staff@smartstock.in / Staff@123')}
+                      className="font-label-sm text-label-sm text-primary hover:text-on-primary-container font-medium transition-colors"
+                    >
+                      Forgot password?
+                    </button>
+                  </div>
+                )}
 
                 {/* Primary CTA Button */}
                 <button
@@ -220,11 +342,11 @@ export default function LoginPage() {
                   {loading ? (
                     <>
                       <span className="animate-spin material-symbols-outlined text-[18px]">progress_activity</span>
-                      <span>Signing in...</span>
+                      <span>Processing...</span>
                     </>
                   ) : (
                     <>
-                      <span>Sign In</span>
+                      <span>{isRegisterMode ? 'Create Account & Sign In' : 'Sign In'}</span>
                       <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                     </>
                   )}
@@ -232,43 +354,45 @@ export default function LoginPage() {
               </form>
 
               {/* Interactive QA / Demo Controls Switcher */}
-              <div className="mt-8 pt-5 bg-surface-container-low p-3.5 rounded-lg space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <span className="font-caption text-caption uppercase text-secondary font-semibold tracking-wider flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[14px]">tune</span> Quick Fill Demo Accounts
-                  </span>
-                  <span className="font-caption text-caption text-on-surface-variant">One-Click Testing</span>
+              {!isRegisterMode && (
+                <div className="mt-8 pt-5 bg-surface-container-low p-3.5 rounded-lg space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-caption text-caption uppercase text-secondary font-semibold tracking-wider flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[14px]">tune</span> Quick Fill Demo Accounts
+                    </span>
+                    <span className="font-caption text-caption text-on-surface-variant">One-Click Testing</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    <button
+                      className={`px-2.5 py-1 rounded-full font-caption text-caption font-medium transition ${
+                        activeState === 'normal' ? 'bg-primary-container text-on-primary font-semibold' : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
+                      }`}
+                      onClick={() => applyState('normal')}
+                      type="button"
+                    >
+                      Admin Account (admin@smartstock.in)
+                    </button>
+                    <button
+                      className={`px-2.5 py-1 rounded-full font-caption text-caption font-medium transition ${
+                        activeState === 'staff' ? 'bg-primary-container text-on-primary font-semibold' : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
+                      }`}
+                      onClick={() => applyState('staff')}
+                      type="button"
+                    >
+                      Staff Account (staff@smartstock.in)
+                    </button>
+                    <button
+                      className={`px-2.5 py-1 rounded-full font-caption text-caption font-medium transition ${
+                        activeState === 'bad-auth' ? 'bg-primary-container text-on-primary font-semibold' : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
+                      }`}
+                      onClick={() => applyState('bad-auth')}
+                      type="button"
+                    >
+                      Trigger Credential Alert
+                    </button>
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
-                  <button
-                    className={`px-2.5 py-1 rounded-full font-caption text-caption font-medium transition ${
-                      activeState === 'normal' ? 'bg-primary-container text-on-primary font-semibold' : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
-                    }`}
-                    onClick={() => applyState('normal')}
-                    type="button"
-                  >
-                    Admin Account (admin@smartstock.in)
-                  </button>
-                  <button
-                    className={`px-2.5 py-1 rounded-full font-caption text-caption font-medium transition ${
-                      activeState === 'staff' ? 'bg-primary-container text-on-primary font-semibold' : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
-                    }`}
-                    onClick={() => applyState('staff')}
-                    type="button"
-                  >
-                    Staff Account (staff@smartstock.in)
-                  </button>
-                  <button
-                    className={`px-2.5 py-1 rounded-full font-caption text-caption font-medium transition ${
-                      activeState === 'bad-auth' ? 'bg-primary-container text-on-primary font-semibold' : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
-                    }`}
-                    onClick={() => applyState('bad-auth')}
-                    type="button"
-                  >
-                    Trigger Credential Alert
-                  </button>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Trust Footer */}
