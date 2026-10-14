@@ -137,3 +137,4 @@ export const getUserProfile = async (req, res) => {
 };
 
 export default { loginUser, registerUser, getUserProfile };
+

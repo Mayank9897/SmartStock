@@ -8,3 +8,4 @@ router.get('/summary', getSummary);
 router.get('/top-products', getTopProducts);
 
 export default router;
+

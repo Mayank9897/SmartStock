@@ -84,3 +84,4 @@ export const getTopProducts = async (req, res) => {
 };
 
 export default { getSummary, getTopProducts };
+

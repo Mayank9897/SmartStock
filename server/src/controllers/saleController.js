@@ -164,3 +164,4 @@ export const getSaleByInvoice = async (req, res) => {
 };
 
 export default { createSale, getSales, getSaleByInvoice };
+

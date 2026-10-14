@@ -15,3 +15,4 @@ export const generateToken = (id, role = 'staff') => {
 };
 
 export default generateToken;
+

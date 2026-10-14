@@ -594,3 +594,4 @@ export default function SalesPosPage() {
     </div>
   );
 }
+

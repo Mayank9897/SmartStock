@@ -51,3 +51,4 @@ export const formatIndianNumber = (num) => {
 };
 
 export default formatINR;
+

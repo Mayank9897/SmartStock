@@ -11,3 +11,4 @@ router.route('/')
 router.get('/:invoiceNumber', protect, getSaleByInvoice);
 
 export default router;
+

@@ -23,3 +23,4 @@ router.route('/:id')
 router.post('/:id/adjust-stock', protect, adjustStock);
 
 export default router;
+

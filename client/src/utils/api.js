@@ -78,3 +78,4 @@ export const analyticsApi = {
   getTopProducts: () => apiRequest('/analytics/top-products'),
   getDeadStock: () => apiRequest('/analytics/dead-stock'),
 };
+

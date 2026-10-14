@@ -9,3 +9,4 @@ router.post('/register', registerUser);
 router.get('/me', protect, getUserProfile);
 
 export default router;
+
