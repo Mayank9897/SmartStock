@@ -1,0 +1,22 @@
+{
+  "name": "smartstock",
+  "version": "1.0.0",
+  "description": "SmartStock — AI-Powered Inventory & Sales Management System",
+  "private": true,
+  "scripts": {
+    "server": "npm --prefix server run dev",
+    "server:start": "npm --prefix server start",
+    "client": "npm --prefix client run dev",
+    "client:build": "npm --prefix client run build",
+    "seed": "npm --prefix server run seed"
+  },
+  "keywords": [
+    "inventory-management",
+    "mern-stack",
+    "pos",
+    "smartstock",
+    "bca-mini-project"
+  ],
+  "author": "Mayank",
+  "license": "MIT"
+}

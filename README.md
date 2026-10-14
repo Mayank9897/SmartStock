@@ -1,274 +1,268 @@
-# 📦 SmartStock — AI-Powered Inventory & Sales Management System
+# 📦 SmartStock — AI-Powered Enterprise Inventory & Sales Management Platform
 
-[![Node.js](https://img.shields.io/badge/Node.js-v18+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-v20+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-4.x-000000?logo=express&logoColor=white)](https://expressjs.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![Google Gemini AI](https://img.shields.io/badge/Google_Gemini-3.7_Flash-4285F4?logo=google&logoColor=white)](https://aistudio.google.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose_8.x-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![JWT Auth](https://img.shields.io/badge/Auth-JWT_&_Bcrypt-blue)](https://jwt.io/)
-[![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC)
+[![Currency](https://img.shields.io/badge/Currency-INR_(₹)-green)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **SmartStock** is an enterprise-grade, full-stack inventory and sales intelligence platform. Engineered with a clean **Controller-Service-Model** backend architecture, concurrency-safe atomic inventory operations, role-based access control (RBAC), and real-time business intelligence powered by **Google Gemini AI**.
+> **SmartStock** is a full-stack, enterprise-grade inventory intelligence and point-of-sale (POS) platform designed for modern retail and wholesale commerce. Built on the **MERN** stack (MongoDB, Express, React, Node.js), it integrates concurrency-safe stock updates, role-based access control, real-time analytics visualization, and complete Indian commercial market localization.
 
 ---
 
 ## 📑 Table of Contents
 
-1. [System Overview & Value Proposition](#-system-overview--value-proposition)
-2. [Core Features](#-core-features)
-3. [System Architecture & Design Patterns](#-system-architecture--design-patterns)
-4. [Concurrency-Safe Inventory Engine](#-concurrency-safe-inventory-engine)
-5. [Data-Grounded AI Advisor](#-data-grounded-ai-advisor)
-6. [Data Models & Schema Design](#-data-models--schema-design)
-7. [REST API Documentation](#-rest-api-documentation)
-8. [Security & Enterprise Best Practices](#-security--enterprise-best-practices)
-9. [Project Directory Layout](#-project-directory-layout)
-10. [Author & Portfolio Contact](#-author--portfolio-contact)
+1. [System Overview & Architecture](#-system-overview--architecture)
+2. [Key Application Modules](#-key-application-modules)
+3. [Concurrency-Safe Inventory Engine](#-concurrency-safe-inventory-engine)
+4. [Indian Market Localization](#-indian-market-localization)
+5. [UI / UX Design System](#-ui--ux-design-system)
+6. [Data Models & Schema Specifications](#-data-models--schema-specifications)
+7. [RESTful API Endpoints](#-restful-api-endpoints)
+8. [Project Structure](#-project-structure)
+9. [Author & Portfolio Contact](#-author--portfolio-contact)
 
 ---
 
-## 🎯 System Overview & Value Proposition
+## 🎯 System Overview & Architecture
 
-Modern retail operations and supply chains demand high-throughput reliability, real-time inventory precision, and proactive data analytics. **SmartStock** addresses traditional inventory challenges with three engineering solutions:
-
-1. **Eliminating Race Conditions**: Employs single-document atomic update conditions (`$gte` + `$inc`) in MongoDB to prevent negative inventory during high-concurrency checkout bursts.
-2. **Actionable AI Business Intelligence**: Injects live inventory and sales velocity data directly into **Google Gemini 3.7 Flash** to provide grounded, hallucination-free restocking and revenue optimization recommendations.
-3. **Decoupled, Scalable Architecture**: Adheres strictly to the **Controller $\rightarrow$ Service $\rightarrow$ Model** design pattern, ensuring high testability, separation of concerns, and clean API boundaries.
-
----
-
-## ✨ Core Features
-
-- 🔐 **Authentication & RBAC**: Secure JWT-based authentication with `bcryptjs` password hashing and granular role enforcement (`Admin` vs. `Staff`).
-- 📦 **Inventory & SKU Lifecycle**: Automated status state machine (`In Stock`, `Low Stock`, `Out of Stock`), search, filtering, and batch restocking.
-- ⚡ **Concurrency-Safe Point of Sale**: Real-time sales checkout engine with atomic inventory deductions and invoice generation.
-- 📊 **Executive Analytics Dashboard**: High-performance MongoDB aggregation pipelines for revenue KPIs, monthly sales trends, and category distribution.
-- 🤖 **Data-Grounded Gemini AI Advisor**: Real-time DB context retrieval coupled with Gemini AI to generate automated purchasing advice and demand forecasts.
-- 🛡️ **Fault-Tolerant AI Fallback**: Graceful degradation to a deterministic heuristic engine if AI rate limits or network issues occur.
-
----
-
-## 🏗️ System Architecture & Design Patterns
-
-SmartStock follows a clean, layered architectural pattern:
+SmartStock solves critical inventory management challenges: preventing overselling during checkout bursts, maintaining accurate valuation across warehouses, and providing actionable executive insights through real-time telemetry.
 
 ```
-                  +-----------------------------------+
-                  |      Client / Frontend Layer      |
-                  | (React / Vue / Next.js / Mobile)  |
-                  +-----------------+-----------------+
-                                    | (JSON / HTTPS)
-                                    v
-                  +-----------------------------------+
-                  |     Express Application Layer     |
-                  |   [CORS -> JSON Parser -> Auth]   |
-                  +-----------------+-----------------+
-                                    |
-                    +---------------+---------------+
-                    |                               |
-                    v                               v
-        +-----------------------+       +-----------------------+
-        |   Auth Controller     |       | Inventory Controller  |
-        |   Product Controller  |       | Dashboard Controller  |
-        |   Sale Controller     |       | AI Advisor Controller |
-        +-----------+-----------+       +-----------+-----------+
-                    |                               |
-                    v                               v
-        +-----------------------+       +-----------------------+
-        |   Business Services   | <---> |   AI Context Engine   |
-        |  (Validation & Logic) |       |   (backend/services)  |
-        +-----------+-----------+       +-----------+-----------+
-                    |                               |
-                    |                       (Prompt + Live Metrics)
-                    |                               v
-                    |                   +-----------------------+
-                    |                   |   Google Gemini API   |
-                    |                   |  (@google/genai SDK)  |
-                    |                   +-----------------------+
-                    v
-        +-----------------------------------+
-        |       Mongoose Data Models        |
-        |      (User, Product, Sale)        |
-        +-----------------+-----------------+
-                          |
-                          v
-        +-----------------------------------+
-        |     MongoDB Database Engine       |
-        |  (Atomic Operations & Aggregations|
-        +-----------------------------------+
+                              ┌──────────────────────────────────────────────┐
+                              │             React 18 SPA (Vite)              │
+                              │  Tailwind CSS • Recharts • Context Hooks     │
+                              └──────────────────────┬───────────────────────┘
+                                                     │ HTTPS / JSON API
+                                                     ▼
+                              ┌──────────────────────────────────────────────┐
+                              │          Express REST API Gateway            │
+                              │     CORS • Auth Middleware • Error Handler   │
+                              └──────────┬────────────────────────┬──────────┘
+                                         │                        │
+                      ┌──────────────────┴──────┐      ┌──────────┴─────────────────┐
+                      │  Authentication Engine  │      │  Inventory & Sales Engine  │
+                      │  JWT + Bcrypt Hashing   │      │  Atomic Decrement Logic    │
+                      └──────────────────┬──────┘      └──────────┬─────────────────┘
+                                         │                        │
+                                         ▼                        ▼
+                              ┌──────────────────────────────────────────────┐
+                              │               MongoDB Atlas                  │
+                              │       Atomic Engine & Aggregations           │
+                              └──────────────────────────────────────────────┘
 ```
+
+---
+
+## ✨ Key Application Modules
+
+### 1. 📊 Executive Dashboard
+- **Real-Time KPIs**: Live gross revenue, inventory asset valuation, active order counts, and safety stock health indices.
+- **Visual Trajectory**: Dynamic Recharts area chart illustrating 30-day sales trajectories.
+- **Stock Alert Feed**: Priority indicators warning of low-stock and out-of-stock items needing procurement attention.
+
+### 2. 📦 Product Catalog & Stock Operations
+- **Full SKU Management**: Search, category filtering, multi-warehouse classification, and supplier association.
+- **Stock Health State Machine**: Dynamic state evaluation (`In Stock` $\rightarrow$ `Low Stock` $\rightarrow$ `Out of Stock`) based on minimum threshold rules.
+- **Quick Stock Adjustment Drawer**: Live slide-out drawer providing instant stock delta calculations and audit recording.
+
+### 3. ⚡ High-Throughput Sales & POS Register
+- **Fast Product Lookup**: Barcode search and category-filtered grid cards for rapid terminal scanning.
+- **Dynamic Cart Engine**: Line-item quantity steppers, subtotal computation, automated GST tax calculation, and loyalty tier discounts.
+- **Multi-Tender Payment Processing**: Support for UPI / Razorpay, Credit/Debit Cards, Net Banking, and Cash with instant invoice generation.
+
+### 4. 📈 Analytics & Financial Valuation
+- **Sales vs. Margin Composed Analysis**: Overlaying gross sales volume against net operational margin.
+- **Category Inventory Distribution**: Interactive SVG donut chart detailing stock valuation across departments.
+- **Top 5 Bestselling Products**: Leaderboard ranking products by units sold, total revenue, and profit margins.
+- **Dead Stock Analysis**: Highlighting stagnant capital and slow-moving SKUs.
+
+### 5. 👥 Vendor & Customer Directories
+- **Customer CRM**: Tracking business accounts, cities, credit balances, and loyalty tiers.
+- **Vendor Network**: Managing supplier contact details, lead times, and procurement routing.
 
 ---
 
 ## 🛡️ Concurrency-Safe Inventory Engine
 
-### The Challenge
-In multi-user retail environments, standard `findOne` followed by `save()` creates a critical race condition window where simultaneous checkouts can lead to overselling and negative inventory.
+### The Race Condition Problem
+In high-throughput multi-terminal environments, traditional read-then-write patterns (`find` followed by `save`) create a race condition where two simultaneous checkouts for the last available item result in inventory corruption and negative stock.
 
-### The Solution
-SmartStock implements single-document conditional atomic decrements at the database engine level:
+### The Solution: Atomic Pre-Condition Decrements
+SmartStock prevents overselling using single-document atomic update queries at the database engine level:
 
 ```javascript
-// Atomic inventory deduction with pre-condition check
+// Concurrency-safe atomic deduction
 const updatedProduct = await Product.findOneAndUpdate(
   {
-    _id: item.productId,
-    stockQuantity: { $gte: item.quantity } // Evaluated atomically by MongoDB
+    _id: item.product,
+    stockQuantity: { $gte: item.quantity }, // Pre-condition verified atomically
   },
   {
-    $inc: { stockQuantity: -item.quantity } // Immediate decrement
+    $inc: { stockQuantity: -item.quantity }, // Atomic decrement
   },
   { new: true }
 );
 
 if (!updatedProduct) {
-  throw new Error(`Insufficient stock or concurrent modification for item: ${item.name}`);
+  throw new Error(`Insufficient stock for item: ${item.name}`);
 }
 ```
 
 ---
 
-## 🤖 Data-Grounded AI Advisor
+## 🇮🇳 Indian Market Localization
 
-Rather than generic conversational LLMs, SmartStock uses **Retrieval-Augmented Context Injection**:
+- **Standard Currency (INR ₹)**: Standardized across all views using `Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' })`.
+- **Indian Numbering Format**: Correct Lakh and Crore formatting (e.g., `₹1,28,450.00`).
+- **Indian Commercial Context**: Products, enterprise accounts (Mumbai, Pune, Bengaluru, Delhi, Ahmedabad), and domestic logistics suppliers.
+- **Payment Methods**: Seamless handling of UPI (Google Pay, PhonePe, Paytm), Razorpay, NEFT/RTGS, and Cards.
+
+---
+
+## 🎨 UI / UX Design System
+
+The visual design system is built to provide enterprise clarity and data density:
+
+| Token | Value | Semantic Use |
+| :--- | :--- | :--- |
+| **Primary Emerald** | `#006C49` | Key brand actions, primary buttons, active navigation |
+| **Secondary Mint** | `#10B981` | Positive financial growth, "In Stock" indicators |
+| **Alert Amber** | `#F59E0B` | Safety stock threshold warnings, "Low Stock" badge |
+| **Critical Coral** | `#EF4444` | Stockout alerts, critical inventory shortages |
+| **Surface Dark** | `#0F172A` | High-contrast data sidebars and navigation framing |
+| **Typography** | `Inter`, `sans-serif` | Clean, highly legible data density |
+| **Monospace** | `JetBrains Mono` | Financial figures, SKUs, barcodes, and invoice IDs |
+
+---
+
+## 📊 Data Models & Schema Specifications
+
+### `User` Schema
+```javascript
+{
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true }, // bcrypt hashed
+  role: { type: String, enum: ['admin', 'staff'], default: 'staff' },
+  timestamps: true
+}
+```
+
+### `Product` Schema
+```javascript
+{
+  sku: { type: String, required: true, unique: true, uppercase: true },
+  barcode: { type: String, unique: true },
+  name: { type: String, required: true },
+  description: { type: String },
+  category: { type: String, required: true },
+  costPrice: { type: Number, required: true },
+  price: { type: Number, required: true },
+  stockQuantity: { type: Number, required: true, default: 0 },
+  minimumStock: { type: Number, default: 5 },
+  warehouse: { type: String, default: 'Mumbai Hub' },
+  status: { type: String, enum: ['In Stock', 'Low Stock', 'Out of Stock'] },
+  timestamps: true
+}
+```
+
+### `Sale` Schema
+```javascript
+{
+  invoiceNumber: { type: String, required: true, unique: true },
+  items: [
+    {
+      product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+      name: String,
+      quantity: Number,
+      unitPrice: Number,
+      subtotal: Number
+    }
+  ],
+  subtotal: Number,
+  discount: Number,
+  tax: Number,
+  totalAmount: Number,
+  paymentMethod: { type: String, enum: ['Cash', 'Credit Card', 'UPI / Razorpay', 'NEFT Transfer'] },
+  customerName: String,
+  soldBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  saleDate: { type: Date, default: Date.now }
+}
+```
+
+---
+
+## 🔌 RESTful API Endpoints
+
+### Authentication (`/api/auth`)
+| Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/auth/login` | Authenticate user credentials & return JWT | Public |
+| `POST` | `/api/auth/register` | Register new user account | Public |
+| `GET` | `/api/auth/me` | Fetch authenticated user session profile | Protected |
+
+### Products & Inventory (`/api/products`)
+| Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/products` | Query products with category & status filters | Public / Protected |
+| `GET` | `/api/products/:id` | Fetch single product record by ID or SKU | Protected |
+| `POST` | `/api/products` | Create product in catalog | Protected (Admin) |
+| `PUT` | `/api/products/:id` | Update product information | Protected (Admin) |
+| `DELETE` | `/api/products/:id` | Remove product from catalog | Protected (Admin) |
+| `POST` | `/api/products/:id/adjust-stock` | Quick inventory adjustment drawer | Protected |
+
+### Point of Sale & Checkout (`/api/sales`)
+| Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/sales` | Create sale with atomic stock deduction | Protected |
+| `GET` | `/api/sales` | Retrieve recent sales invoices | Protected |
+| `GET` | `/api/sales/:invoiceNumber`| Fetch invoice details and line items | Protected |
+
+### Analytics & Reports (`/api/analytics`)
+| Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/analytics/summary` | Dashboard summary KPIs, sales, & alerts | Protected |
+| `GET` | `/api/analytics/top-products`| Top 5 bestseller velocity rankings | Protected |
+
+---
+
+## 📂 Project Structure
 
 ```
-[MongoDB Database] 
-       │ (Extract Low-Stock SKUs, 30-Day Sales Velocity, Revenue Metrics)
-       ▼
-[aiService.js] 
-       │ (Construct Structured Business Context & Heuristic Directives)
-       ▼
-[Google Gemini 3.7 Flash Model]
-       │ (Analyzes exact numerical facts & prioritizes operational actions)
-       ▼
-[Actionable Restocking & Demand Forecast Output]
-```
-
-### Resilience & Fallback Mode
-If the Gemini API key is unset or external API rate limits are hit, the system automatically falls back to an internal rule-based analysis engine without throwing 500 errors to the client.
-
----
-
-## 📊 Data Models & Schema Design
-
-### User Model (`models/User.js`)
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `name` | `String` | User full name |
-| `email` | `String` | Unique login email (indexed) |
-| `password` | `String` | Salted bcrypt password hash |
-| `role` | `String` | Role-Based Access (`admin` \| `staff`) |
-| `createdAt` | `Date` | Timestamp of account creation |
-
-### Product Model (`models/Product.js`)
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `name` | `String` | Product title / name |
-| `sku` | `String` | Unique Stock Keeping Unit (indexed, uppercase) |
-| `category` | `String` | Product categorization |
-| `price` | `Number` | Retail selling price |
-| `costPrice` | `Number` | Procurement cost price |
-| `stockQuantity` | `Number` | Current available inventory count |
-| `minimumStock` | `Number` | Safety stock alert threshold |
-| `status` | `String` | Dynamic status (`In Stock` \| `Low Stock` \| `Out of Stock`) |
-| `createdBy` | `ObjectId` | Reference to User who created the product |
-
-### Sale Model (`models/Sale.js`)
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `invoiceNumber` | `String` | Unique generated invoice ID |
-| `items` | `Array` | Line items (Product Ref, Quantity, Unit Price, Subtotal) |
-| `totalAmount` | `Number` | Total calculated sale amount |
-| `paymentMethod` | `String` | `Cash`, `Credit Card`, `Debit Card`, `UPI`, `Net Banking` |
-| `soldBy` | `ObjectId` | Reference to Staff / User who processed the sale |
-| `saleDate` | `Date` | Timestamp of transaction |
-
----
-
-## 🔌 REST API Documentation
-
-### 🔑 Authentication Endpoints (`/api/auth`)
-- `POST /api/auth/register` — Register new user account (returns JWT token)
-- `POST /api/auth/login` — Authenticate credentials & issue JWT
-- `GET /api/auth/profile` — Get authenticated user session details
-
-### 📦 Product & Catalog Endpoints (`/api/products`)
-- `GET /api/products` — List products (with pagination, search, category filter)
-- `GET /api/products/:id` — Get single product details
-- `POST /api/products` — Create new product *(Admin only)*
-- `PUT /api/products/:id` — Update product details *(Admin only)*
-- `DELETE /api/products/:id` — Remove product *(Admin only)*
-
-### 📋 Inventory Management Endpoints (`/api/inventory`)
-- `GET /api/inventory/low-stock` — Retrieve all items below minimum threshold
-- `POST /api/inventory/restock` — Batch restock quantities *(Admin only)*
-- `GET /api/inventory/export` — Export inventory report *(Admin only)*
-
-### 💳 Sales & Checkout Endpoints (`/api/sales`)
-- `POST /api/sales` — Process new sale with atomic stock deduction
-- `GET /api/sales` — Retrieve sales history with date range filtering
-- `GET /api/sales/:invoiceNumber` — Fetch invoice and line items
-
-### 📈 Analytics & Metrics Endpoints (`/api/dashboard`)
-- `GET /api/dashboard/summary` — Aggregate revenue, total sales, and stock health KPIs
-- `GET /api/dashboard/charts` — Monthly revenue trends & category distribution
-
-### 🧠 AI Intelligence Endpoints (`/api/ai`)
-- `GET /api/ai/recommendations` — Generate AI-grounded restocking & purchasing advice
-- `POST /api/ai/query` — Natural language business Q&A based on live store data
-
----
-
-## 🔒 Security & Enterprise Best Practices
-
-- **Password Hashing**: Salted and hashed using `bcryptjs` (work factor 10).
-- **Stateless Tokens**: Signed JWT tokens with configurable expiration (`7d`).
-- **Granular RBAC**: Role-based access control protecting critical mutations.
-- **Input Validation**: Strict schema enforcement preventing NoSQL injection.
-- **CORS Protection**: Domain whitelisting for authorized frontends.
-- **Environment Isolation**: Zero hardcoded secrets; fully driven by `.env`.
-
----
-
-## 📂 Project Directory Layout
-
-```
-smartstock/
-├── backend/
-│   ├── config/
-│   │   └── db.js                 # MongoDB connection lifecycle
-│   ├── controllers/
-│   │   ├── authController.js     # User registration & login handlers
-│   │   ├── productController.js  # Product catalog management
-│   │   ├── inventoryController.js# Low-stock alerts & restocking
-│   │   ├── saleController.js     # Checkout processing & invoice generation
-│   │   ├── dashboardController.js# Aggregated revenue & KPI statistics
-│   │   └── aiController.js       # AI advisor endpoints
-│   ├── middleware/
-│   │   ├── authMiddleware.js     # JWT token validation & RBAC authorization
-│   │   └── errorMiddleware.js    # Centralized HTTP error handler
-│   ├── models/
-│   │   ├── User.js               # User & Authentication Model
-│   │   ├── Product.js            # Product & Stock Model
-│   │   └── Sale.js               # Sales Invoice & Line Items Model
-│   ├── routes/
-│   │   ├── authRoutes.js         # /api/auth routes
-│   │   ├── productRoutes.js      # /api/products routes
-│   │   ├── inventoryRoutes.js    # /api/inventory routes
-│   │   ├── saleRoutes.js         # /api/sales routes
-│   │   ├── dashboardRoutes.js    # /api/dashboard routes
-│   │   └── aiRoutes.js           # /api/ai routes
-│   ├── services/
-│   │   └── aiService.js          # Google Gemini AI integration & prompt grounding
-│   ├── utils/
-│   │   ├── generateToken.js      # JWT signing utility
-│   │   └── exportHelper.js       # Export helper utility
-│   ├── .env.example              # Blueprint for environment variables
-│   ├── package.json              # Backend dependencies & scripts
-│   └── server.js                 # Express application entry point
-├── frontend/                     # Client application placeholder
-├── .gitignore                    # Git ignore file for secrets and dependencies
-└── README.md                     # Portfolio presentation & technical documentation
+SmartStock/
+├── client/                      # React 18 Frontend Application
+│   ├── src/
+│   │   ├── assets/              # AI-generated hero graphics & icons
+│   │   ├── components/layout/   # Navigation Sidebar, App Header, App Layout
+│   │   ├── hooks/               # useAuth Context Hook
+│   │   ├── pages/               # Dashboard, Products, Sales/POS, Analytics, etc.
+│   │   ├── services/            # Axios / Fetch API client configuration
+│   │   ├── utils/               # Indian Currency Formatter (formatINR)
+│   │   ├── App.jsx              # Client Route Hierarchy
+│   │   └── main.jsx             # React DOM Root
+│   ├── tailwind.config.js       # Color, spacing & typography design tokens
+│   ├── vite.config.js           # Vite development server & reverse proxy
+│   └── package.json
+├── server/                      # Node.js & Express REST Backend
+│   ├── src/
+│   │   ├── config/              # MongoDB connection & timeout configuration
+│   │   ├── controllers/         # Auth, Product, Sale, Analytics controllers
+│   │   ├── middleware/          # JWT protect & centralized error middleware
+│   │   ├── models/              # Mongoose schemas (User, Product, Sale, etc.)
+│   │   ├── routes/              # Express API routers
+│   │   ├── services/            # Seed service & business logic
+│   │   ├── utils/               # JWT token generation
+│   │   ├── app.js               # Express application middleware mounting
+│   │   └── server.js            # HTTP Server bootstrap & startup telemetry
+│   ├── .env.example             # Documented environment blueprint
+│   └── package.json
+├── package.json                 # Monorepo root dev script runner
+└── README.md                    # Platform documentation
 ```
 
 ---
@@ -277,9 +271,9 @@ smartstock/
 
 - **Developer**: [Mayank](https://github.com/Mayank9897)
 - **Repository**: [https://github.com/Mayank9897/SmartStock](https://github.com/Mayank9897/SmartStock)
-- **Project**: SmartStock — AI-Powered Inventory & Sales Management System
+- **Project**: SmartStock — AI-Powered Inventory & Sales Management Platform
 
 ---
 
 ## 📄 License
-This project is open-source and licensed under the [ISC License](LICENSE).
+This project is open-source and licensed under the [MIT License](LICENSE).

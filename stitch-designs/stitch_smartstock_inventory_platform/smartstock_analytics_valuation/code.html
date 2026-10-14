@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"error-container":"#ffdad6","secondary":"#515f74","primary-fixed-dim":"#4edea3","surface-bright":"#f8f9ff","outline-variant":"#bbcabf","on-primary-fixed-variant":"#005236","surface-container-low":"#eff4ff","surface-container-lowest":"#ffffff","inverse-surface":"#213145","on-tertiary-fixed":"#410005","on-primary":"#ffffff","surface-tint":"#006c49","secondary-fixed":"#d5e3fd","on-surface":"#0b1c30","surface-container-highest":"#d3e4fe","inverse-on-surface":"#eaf1ff","on-primary-container":"#00422b","on-error-container":"#93000a","surface-container-high":"#dce9ff","tertiary-fixed":"#ffdad7","secondary-container":"#d5e3fd","secondary-fixed-dim":"#b9c7e0","on-secondary-fixed":"#0d1c2f","on-tertiary":"#ffffff","error":"#ba1a1a","background":"#f8f9ff","surface":"#f8f9ff","inverse-primary":"#4edea3","primary":"#006c49","on-secondary-fixed-variant":"#3a485c","on-primary-fixed":"#002113","tertiary-fixed-dim":"#ffb3af","primary-fixed":"#6ffbbe","tertiary-container":"#fc7c78","tertiary":"#a43a3a","on-surface-variant":"#3c4a42","surface-container":"#e5eeff","on-error":"#ffffff","on-tertiary-fixed-variant":"#842225","surface-variant":"#d3e4fe","outline":"#6c7a71","on-secondary-container":"#57657b","on-secondary":"#ffffff","primary-container":"#10b981","on-background":"#0b1c30","surface-dim":"#cbdbf5","on-tertiary-container":"#711419"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xs":"0.25rem","space-xl":"2rem","space-sm":"0.5rem","gutter-lg":"1.5rem","margin-desktop":"2rem","space-2xl":"3rem","margin":"1.5rem","gutter":"1.25rem","space-md":"0.75rem","gutter-sm":"0.75rem","space-2xs":"0.125rem","margin-mobile":"1rem","space-base":"1rem","space-lg":"1.5rem"},fontFamily:{"headline-md":["Inter"],"display-lg":["Inter"],"body-sm":["Inter"],"label-md":["Inter"],"headline-sm":["Inter"],"body-lg":["Inter"],"body-md":["Inter"],"caption":["Inter"],"label-sm":["Inter"],"display-lg-mobile":["Inter"],"headline-lg":["Inter"],"data-mono":["Inter"]},fontSize:{"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"display-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-sm":["13px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"400"}],"label-md":["13px",{lineHeight:"18px",letterSpacing:"0.005em",fontWeight:"500"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"0em",fontWeight:"400"}],"body-md":["14px",{lineHeight:"20px",letterSpacing:"0em",fontWeight:"400"}],"caption":["11px",{lineHeight:"14px",letterSpacing:"0.02em",fontWeight:"500"}],"label-sm":["12px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"500"}],"display-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"700"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"data-mono":["13px",{lineHeight:"18px",letterSpacing:"-0.01em",fontWeight:"500"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col justify-between border-r border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex flex-col flex-1 min-h-0"><div class="h-16 px-space-base flex items-center justify-between border-b border-outline-variant/20"><div class="flex items-center gap-space-sm"><img alt="SmartStock Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VD-o9u8NwlgBuQ-W2nH9pK9GuNjrapKABF1eZOhyQwbsArkuVKMdVsqH66b1hWK9AzyWT2fQN9QPls1UNhwinAZc-cvGmBAcO-JzJjM_hg3rYxsWn35aFlY8UD8mmBf-SFQ_WkrmBI6Dox3Apc-Moa-_klfKD6L-Rn2IWymJllvFRf8vB9ZQUYll8-Hr0pKYLTEdcQQ3qHf0qpvOehbIg0rGwLrZnWNrlUZMjo2ZLy6h9hv3FXbVpnPg"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold">SmartStock</span></div><button aria-label="Collapse sidebar" class="text-on-surface-variant hover:text-on-surface p-space-2xs rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">menu_open</span></button></div><div class="px-space-base py-space-sm"><span class="font-caption text-caption uppercase text-secondary font-semibold tracking-wider">Operations</span></div><nav class="flex-1 px-space-sm space-y-space-2xs overflow-y-auto" data-active-classes="bg-primary text-on-primary font-label-md text-label-md"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="products" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Products</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="inventory" href="#"><span class="material-symbols-outlined text-[20px]">warehouse</span><span>Inventory</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="sales-&-pos" href="#"><span class="material-symbols-outlined text-[20px]">point_of_sale</span><span>Sales & POS</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="customers" href="#"><span class="material-symbols-outlined text-[20px]">groups</span><span>Customers</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="suppliers" href="#"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span>Suppliers</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg transition-colors bg-primary text-on-primary font-label-md text-label-md" data-path="analytics-&-reports" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span>Analytics & Reports</span></a></nav></div><div class="p-space-sm border-t border-outline-variant/20"><nav data-active-classes="bg-primary text-on-primary font-label-md text-label-md"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></nav><div class="mt-space-xs p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="inline-block w-2 h-2 rounded-full bg-primary-container"></span><span class="font-caption text-caption text-secondary">Austin Hub Online</span></div><span class="font-caption text-caption text-secondary font-data-mono text-data-mono">v2.4.0</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest border-b border-outline-variant/30 shadow-[0_1px_4px_rgba(0,0,0,0.02)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><nav aria-label="Breadcrumbs" class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary"><a class="hover:text-on-surface transition-colors" href="#">Operations</a><span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span><span class="text-on-surface font-semibold">Overview</span></nav></div><div class="flex-1 max-w-md mx-space-lg"><div class="relative flex items-center"><span class="material-symbols-outlined text-[18px] text-secondary absolute left-space-md pointer-events-none">search</span><input class="w-full bg-surface-bright border border-outline-variant/40 rounded-lg pl-9 pr-14 py-space-xs font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none focus:border-primary" placeholder="Search products, SKU, orders, customers..." type="text"/><kbd class="absolute right-space-sm px-1.5 py-0.5 font-caption text-caption text-secondary bg-surface-container-highest/60 rounded border border-outline-variant/30 font-data-mono text-data-mono">⌘K</kbd></div></div><div class="flex items-center gap-space-md"><div class="relative"><button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg border border-outline-variant/40 bg-surface-bright text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[18px] text-primary">storefront</span><span class="font-label-sm text-label-sm max-w-[150px] truncate">Main Warehouse — Austin Hub</span><span class="material-symbols-outlined text-[16px] text-secondary">arrow_drop_down</span></button></div><button class="flex items-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm px-space-md py-1.5 rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Stock In / New Sale</span></button><div class="relative"><button aria-label="Notifications" class="p-space-xs rounded-lg text-secondary hover:bg-surface-container hover:text-on-surface transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 flex items-center justify-center w-4 h-4 bg-error text-on-error rounded-full text-[10px] font-bold leading-none">3</span></button></div><div class="h-6 w-px bg-outline-variant/30"></div><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoOvmfZk--FE5GTby2uQJJGCa_z50cconeOC_rHBt3szur5Py2jO7ZEVMuKN8bCZczpZKU3-FjQ5rjc44gTYXZKLIR1NaFMYbbof9RBsLBRFdXwYt0uPNwFq4943nYFSNboZISJ1rzopIZ3saK3B7dOePwWMs5Q2bag7UzouZW9cDmegegxNno83smgc4FsgAqArdyJVFouU4Huns__bigeyvOQwzN2avq5GDD7LkGU6KqubyK1GcD"/><div class="flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface font-semibold leading-tight">Sarah Jenkins</span><span class="font-caption text-caption text-secondary leading-tight">Operations Admin</span></div></div></div></header><main class="relative pt-16 w-full px-space-lg py-space-lg bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Analytics Control Header -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-base pb-space-lg">
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs text-secondary font-caption text-caption tracking-wider uppercase">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Executive Intelligence • Austin / Denver / Seattle Hubs</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Sales Trends & Stock Valuation</h1>
+<span class="font-caption text-caption text-secondary font-data-mono text-data-mono bg-surface-container px-space-xs py-0.5 rounded">Q3 REAL-TIME</span>
+</div>
+</div>
+<!-- Filter & Action Strip -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Date Selector Dropdown -->
+<div class="relative bg-surface-container-lowest rounded shadow-sm flex items-center px-space-sm py-1.5 gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">calendar_today</span>
+<select class="bg-transparent font-label-sm text-label-sm text-on-surface focus:outline-none cursor-pointer pr-space-xs">
+<option selected="">Last 30 Days (Oct 1 - Oct 31)</option>
+<option>Quarter to Date (Q3)</option>
+<option>Year to Date (2024)</option>
+<option>Custom Date Range...</option>
+</select>
+</div>
+<!-- Compare Switch -->
+<label class="flex items-center gap-space-xs bg-surface-container-lowest px-space-sm py-1.5 rounded shadow-sm cursor-pointer select-none">
+<input checked="" class="w-3.5 h-3.5 accent-primary rounded cursor-pointer" type="checkbox"/>
+<span class="font-label-sm text-label-sm text-secondary">vs. Previous Period</span>
+</label>
+<!-- Facility Switcher -->
+<div class="relative bg-surface-container-lowest rounded shadow-sm flex items-center px-space-sm py-1.5 gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">hub</span>
+<select class="bg-transparent font-label-sm text-label-sm text-on-surface focus:outline-none cursor-pointer">
+<option selected="">All Facilities (Austin, Denver, Seattle)</option>
+<option>Austin Regional Hub (Primary)</option>
+<option>Denver Fulfillment Center</option>
+<option>Seattle Maritime Depot</option>
+</select>
+</div>
+<!-- Export Suite -->
+<div class="relative group">
+<button class="flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-sm text-label-sm px-space-md py-1.5 rounded shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">download</span>
+<span>Export</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">expand_more</span>
+</button>
+<div class="hidden group-hover:flex flex-col absolute right-0 top-full mt-1 bg-surface-container-lowest rounded shadow-md z-30 min-w-[140px] py-1">
+<a class="px-space-md py-1.5 font-label-sm text-label-sm text-on-surface hover:bg-surface-container flex items-center gap-space-xs" href="#">
+<span class="material-symbols-outlined text-[16px] text-error">picture_as_pdf</span> PDF Report
+          </a>
+<a class="px-space-md py-1.5 font-label-sm text-label-sm text-on-surface hover:bg-surface-container flex items-center gap-space-xs" href="#">
+<span class="material-symbols-outlined text-[16px] text-primary">table_view</span> CSV Raw Feed
+          </a>
+<a class="px-space-md py-1.5 font-label-sm text-label-sm text-on-surface hover:bg-surface-container flex items-center gap-space-xs" href="#">
+<span class="material-symbols-outlined text-[16px] text-secondary">grid_on</span> Excel Workbook
+          </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Metric KPI Cards (4-column grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Metric 1: Net Sales -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider font-semibold">Net Sales Volume</span>
+<span class="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-display-lg text-display-lg text-on-surface tracking-tight font-bold">$284,920.00</div>
+<div class="flex items-center gap-space-2xs mt-1">
+<span class="flex items-center text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +18.2%
+          </span>
+<span class="font-caption text-caption text-secondary">vs. prior 30 days ($241k)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden mt-space-2xs">
+<div class="bg-primary h-full w-[78%] rounded-full"></div>
+</div>
+</div>
+<!-- Metric 2: Stock Valuation Cost -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider font-semibold">Valuation (Asset Cost)</span>
+<span class="w-7 h-7 rounded-full bg-secondary-container/50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">account_balance_wallet</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-display-lg text-display-lg text-on-surface tracking-tight font-bold">$412,650.00</div>
+<div class="flex items-center gap-space-2xs mt-1">
+<span class="font-caption text-caption text-secondary">Acquisition cost on hand</span>
+<span class="font-data-mono text-data-mono font-caption text-caption text-on-surface bg-surface-container px-1 rounded">12,480 units</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden mt-space-2xs">
+<div class="bg-secondary h-full w-[64%] rounded-full"></div>
+</div>
+</div>
+<!-- Metric 3: Stock Valuation Retail -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider font-semibold">Valuation (MSRP Retail)</span>
+<span class="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">point_of_sale</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-display-lg text-display-lg text-on-surface tracking-tight font-bold">$725,180.00</div>
+<div class="flex items-center gap-space-2xs mt-1">
+<span class="text-primary font-label-sm text-label-sm font-semibold">+$312,530.00</span>
+<span class="font-caption text-caption text-secondary">Unrealized Gross Margin (43.1%)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden mt-space-2xs">
+<div class="bg-primary-container h-full w-[88%] rounded-full"></div>
+</div>
+</div>
+<!-- Metric 4: Inventory Turnover Ratio -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider font-semibold">Turnover Velocity</span>
+<span class="px-space-xs py-0.5 rounded-full bg-primary/10 text-primary font-caption text-caption font-semibold">OPTIMAL</span>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight font-bold font-data-mono text-data-mono">6.4x</span>
+<span class="font-caption text-caption text-secondary">annualized</span>
+</div>
+<div class="flex items-center gap-space-2xs mt-1">
+<span class="text-primary font-label-sm text-label-sm font-medium">+1.2x</span>
+<span class="font-caption text-caption text-secondary">over industry norm (5.2x benchmark)</span>
+</div>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden mt-space-2xs">
+<div class="bg-primary h-full w-[92%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Primary Analytic Visualizations (Two Column Side-by-Side Bento Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md mb-space-lg">
+<!-- Chart Card 1: Revenue vs Cost & Gross Margin Curve -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Revenue, Cost & Margin Trajectory</h2>
+<p class="font-body-sm text-body-sm text-secondary">Daily gross booking volumes alongside real-time margin percentage spread</p>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-sm bg-primary"></span>
+<span class="font-caption text-caption text-secondary font-medium">Daily Revenue</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-sm bg-secondary-fixed-dim"></span>
+<span class="font-caption text-caption text-secondary font-medium">COGS</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-4 h-0.5 bg-tertiary"></span>
+<span class="font-caption text-caption text-secondary font-medium">Margin % (Curve)</span>
+</div>
+</div>
+</div>
+<!-- Interactive SVG Chart -->
+<div class="relative w-full h-64 bg-surface-container-low/40 rounded p-space-sm flex flex-col justify-between">
+<!-- SVG Grid & Data -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 700 210">
+<defs>
+<lineargradient id="barRevGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#006c49" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#006c49" stop-opacity="0.6"></stop>
+</lineargradient>
+<lineargradient id="barCostGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#b9c7e0" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#b9c7e0" stop-opacity="0.3"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Reference Gridlines -->
+<line stroke="#bbcabf" stroke-dasharray="3 3" stroke-opacity="0.4" x1="30" x2="690" y1="20" y2="20"></line>
+<line stroke="#bbcabf" stroke-dasharray="3 3" stroke-opacity="0.4" x1="30" x2="690" y1="65" y2="65"></line>
+<line stroke="#bbcabf" stroke-dasharray="3 3" stroke-opacity="0.4" x1="30" x2="690" y1="110" y2="110"></line>
+<line stroke="#bbcabf" stroke-dasharray="3 3" stroke-opacity="0.4" x1="30" x2="690" y1="155" y2="155"></line>
+<line stroke="#bbcabf" stroke-opacity="0.8" x1="30" x2="690" y1="190" y2="190"></line>
+<!-- Y-Axis Labels Left (Revenue) -->
+<text fill="#515f74" font-family="Inter" font-size="9" text-anchor="end" x="25" y="24">$14k</text>
+<text fill="#515f74" font-family="Inter" font-size="9" text-anchor="end" x="25" y="69">$10k</text>
+<text fill="#515f74" font-family="Inter" font-size="9" text-anchor="end" x="25" y="114">$6k</text>
+<text fill="#515f74" font-family="Inter" font-size="9" text-anchor="end" x="25" y="159">$2k</text>
+<!-- Group of Bar Pairs (12 periods sampled across the month) -->
+<!-- Oct 1 -->
+<rect fill="url(#barCostGrad)" height="60" rx="1" width="14" x="45" y="130"></rect>
+<rect fill="url(#barRevGrad)" height="100" rx="1" width="14" x="61" y="90"></rect>
+<!-- Oct 4 -->
+<rect fill="url(#barCostGrad)" height="65" rx="1" width="14" x="95" y="125"></rect>
+<rect fill="url(#barRevGrad)" height="110" rx="1" width="14" x="111" y="80"></rect>
+<!-- Oct 7 -->
+<rect fill="url(#barCostGrad)" height="50" rx="1" width="14" x="145" y="140"></rect>
+<rect fill="url(#barRevGrad)" height="95" rx="1" width="14" x="161" y="95"></rect>
+<!-- Oct 10 -->
+<rect fill="url(#barCostGrad)" height="70" rx="1" width="14" x="195" y="120"></rect>
+<rect fill="url(#barRevGrad)" height="125" rx="1" width="14" x="211" y="65"></rect>
+<!-- Oct 13 -->
+<rect fill="url(#barCostGrad)" height="75" rx="1" width="14" x="245" y="115"></rect>
+<rect fill="url(#barRevGrad)" height="130" rx="1" width="14" x="261" y="60"></rect>
+<!-- Oct 16 -->
+<rect fill="url(#barCostGrad)" height="55" rx="1" width="14" x="295" y="135"></rect>
+<rect fill="url(#barRevGrad)" height="105" rx="1" width="14" x="311" y="85"></rect>
+<!-- Oct 19 -->
+<rect fill="url(#barCostGrad)" height="80" rx="1" width="14" x="345" y="110"></rect>
+<rect fill="url(#barRevGrad)" height="140" rx="1" width="14" x="361" y="50"></rect>
+<!-- Oct 22 -->
+<rect fill="url(#barCostGrad)" height="85" rx="1" width="14" x="395" y="105"></rect>
+<rect fill="url(#barRevGrad)" height="145" rx="1" width="14" x="411" y="45"></rect>
+<!-- Oct 25 -->
+<rect fill="url(#barCostGrad)" height="70" rx="1" width="14" x="445" y="120"></rect>
+<rect fill="url(#barRevGrad)" height="120" rx="1" width="14" x="461" y="70"></rect>
+<!-- Oct 28 -->
+<rect fill="url(#barCostGrad)" height="90" rx="1" width="14" x="495" y="100"></rect>
+<rect fill="url(#barRevGrad)" height="152" rx="1" width="14" x="511" y="38"></rect>
+<!-- Oct 30 -->
+<rect fill="url(#barCostGrad)" height="95" rx="1" width="14" x="545" y="95"></rect>
+<rect fill="url(#barRevGrad)" height="160" rx="1" width="14" x="561" y="30"></rect>
+<!-- Oct 31 -->
+<rect fill="url(#barCostGrad)" height="100" rx="1" width="14" x="595" y="90"></rect>
+<rect fill="url(#barRevGrad)" height="165" rx="1" width="14" x="611" y="25"></rect>
+<!-- Margin Line Curve (Polyline overlaid) -->
+<path d="M 60,95 Q 115,80 165,90 T 265,58 T 365,48 T 465,65 T 565,32 T 618,22" fill="none" stroke="#a43a3a" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Target Dots along Margin line -->
+<circle cx="68" cy="92" fill="#a43a3a" r="3.5"></circle>
+<circle cx="268" cy="60" fill="#a43a3a" r="3.5"></circle>
+<circle cx="418" cy="46" fill="#a43a3a" r="3.5"></circle>
+<circle cx="568" cy="31" fill="#a43a3a" r="3.5"></circle>
+<circle cx="618" cy="22" fill="#a43a3a" r="3.5"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between px-space-md text-[10px] font-caption text-secondary pt-space-xs border-t border-outline-variant/30">
+<span>Oct 01</span>
+<span>Oct 06</span>
+<span>Oct 11</span>
+<span>Oct 16</span>
+<span>Oct 21</span>
+<span>Oct 26</span>
+<span>Oct 31</span>
+</div>
+</div>
+<!-- Quick Summary Footer -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-md border-t border-outline-variant/20 mt-space-sm">
+<div class="flex items-center gap-space-sm font-body-sm text-body-sm text-secondary">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span>Avg Gross Margin for Period: <strong class="text-on-surface font-semibold font-data-mono text-data-mono">41.8%</strong></span>
+</div>
+<div class="flex items-center gap-space-xs font-caption text-caption text-secondary">
+<span>Peak Daily Intake: </span>
+<span class="font-data-mono text-data-mono text-on-surface font-semibold">$14,280 (Oct 31)</span>
+</div>
+</div>
+</div>
+<!-- Chart Card 2: Sales by Category Breakdown (Donut & Breakdown) -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Sales by Category</h2>
+<span class="font-caption text-caption text-secondary font-data-mono text-data-mono">4 SECTORS</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-space-md">Contribution share of gross billings</p>
+<!-- Donut SVG Graphic -->
+<div class="flex items-center justify-center my-space-sm">
+<div class="relative w-44 h-44 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<!-- Background Ring -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#eff4ff" stroke-width="14"></circle>
+<!-- Electronics 42% (Circumference ~ 238.76 -> stroke-dasharray = 100.28, 138.48) -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#006c49" stroke-dasharray="100.3 238.8" stroke-dashoffset="0" stroke-width="14"></circle>
+<!-- Office Furniture 26% -> 62.08 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#10b981" stroke-dasharray="62.1 238.8" stroke-dashoffset="-100.3" stroke-width="14"></circle>
+<!-- Shipping & Packaging 18% -> 42.98 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#515f74" stroke-dasharray="43.0 238.8" stroke-dashoffset="-162.4" stroke-width="14"></circle>
+<!-- Peripherals 14% -> 33.43 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#b9c7e0" stroke-dasharray="33.4 238.8" stroke-dashoffset="-205.4" stroke-width="14"></circle>
+</svg>
+<!-- Center Stats Callout -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+<span class="font-caption text-caption uppercase text-secondary font-semibold">Total Revenue</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">$284.9k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Legend Table -->
+<div class="space-y-space-xs mt-space-sm">
+<div class="flex items-center justify-between p-space-xs rounded hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Electronics</span>
+</div>
+<div class="text-right">
+<span class="font-data-mono text-data-mono font-semibold text-on-surface">$119,666</span>
+<span class="font-caption text-caption text-secondary ml-space-xs">(42%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Office Furniture</span>
+</div>
+<div class="text-right">
+<span class="font-data-mono text-data-mono font-semibold text-on-surface">$74,079</span>
+<span class="font-caption text-caption text-secondary ml-space-xs">(26%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Shipping & Packaging</span>
+</div>
+<div class="text-right">
+<span class="font-data-mono text-data-mono font-semibold text-on-surface">$51,285</span>
+<span class="font-caption text-caption text-secondary ml-space-xs">(18%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed-dim"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Peripherals & Cables</span>
+</div>
+<div class="text-right">
+<span class="font-data-mono text-data-mono font-semibold text-on-surface">$39,890</span>
+<span class="font-caption text-caption text-secondary ml-space-xs">(14%)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Context Graphic Banner -->
+<div class="relative bg-surface-container-lowest rounded shadow-sm overflow-hidden mb-space-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 items-center">
+<div class="p-space-lg md:col-span-2">
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="font-caption text-caption uppercase text-primary font-bold tracking-wider">Automated Warehouse Health Check</span>
+<span class="px-space-xs py-0.5 rounded-full bg-primary/10 text-primary font-data-mono text-data-mono font-semibold text-[11px]">OCT 31 SYNC OK</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-space-xs">Hub Distribution & Rebalancing Recommendations</h3>
+<p class="font-body-md text-body-md text-secondary max-w-xl">
+          Austin central depot is running at <strong class="text-on-surface font-medium">91.4% bin utilization</strong> while Denver has 34% free volume. 
+          Reallocating slow-moving ergonomic seating units will recover $44,800 in active handling costs before holiday peak intake.
+        </p>
+</div>
+<div class="h-36 md:h-full relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Modern bright organized logistics warehouse aisle with high industrial shelving, barcode scanners, pallet racks, tidy inventory boxes, soft ambient warehouse lighting, shot with architectural symmetry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG7RxbWt9efReznWrRBn91IcC55_yaNA7CgrwjAqk5-90aTs-HmSbjetfV4UGRrDPjuHWeU0fJvKiVesSA181Mx9k3s1GbGcpLl9Px8opCjcc_tbGaF0kw5xahDWPb7RoYbCuMEPOLuSWTNnQN4ebIREIiEyCiD2T8Jm8fxIJsvJTWciRufVhtFTYVfAjC-Lycu8oaGgX-SPZnl4obUAawuuvII4jMTfkqgK32n9hiXF4YggiBK9nn"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest/80 via-transparent to-transparent"></div>
+</div>
+</div>
+</div>
+<!-- High-Value Operational Analysis (Two Split Tables) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md mb-space-lg">
+<!-- Left Card: Top 5 Best-Selling Products -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20 mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">leaderboard</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Top 5 Best-Sellers by Revenue</h3>
+</div>
+<span class="font-caption text-caption text-secondary font-medium">30-Day Contribution</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-caption text-caption uppercase">
+<th class="py-2 px-space-xs text-center w-8">#</th>
+<th class="py-2 px-space-xs">Product Details</th>
+<th class="py-2 px-space-xs text-right">Units</th>
+<th class="py-2 px-space-xs text-right">Gross Rev</th>
+<th class="py-2 px-space-xs text-right">Margin %</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant/10">
+<!-- Item 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs text-center font-data-mono text-data-mono font-bold text-primary">01</td>
+<td class="py-2.5 px-space-xs">
+<div class="flex items-center gap-space-xs">
+<img class="w-7 h-7 rounded object-cover" data-alt="Professional 32 inch 4K UltraSharp computer display monitor on minimalist aluminum stand, studio lighting on clean white neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYw3Z6N09oKI42N7GOlTiZ3R1BVyihto6gpzih03NbOUePSW9GS1f5g9y4fwaqZjg9dgQblUOUhF6MV2-xv8IPhwOARP3obgwVcJ8YcWXDw8Tey_8vJMcGD4dNSzqIg9TBbQeMXUVJY3B4cc4lWOJJsXVwPlQdtvyHqzJVEZ1uZ8Z-lj12W73_IC89hVnQ3dRhM1zZCBNgg05abIaB9MVLLEQjCSwU3mwTkpu_JNKOn-U2HfStTLy6"/>
+<div>
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[170px]">Dell UltraSharp 32" 4K</div>
+<div class="font-caption text-caption text-secondary">SKU: DEL-U3223QE</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">142</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$56,658.00</td>
+<td class="py-2.5 px-space-xs text-right">
+<span class="inline-block px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-caption text-caption font-semibold">32.4%</span>
+</td>
+</tr>
+<!-- Item 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs text-center font-data-mono text-data-mono font-bold text-secondary">02</td>
+<td class="py-2.5 px-space-xs">
+<div class="flex items-center gap-space-xs">
+<img class="w-7 h-7 rounded object-cover" data-alt="High-end ergonomic graphite mesh office executive chair with polished aluminum base, professional product photography against neutral studio back" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbX2csF7dKPOMEECYYDc9k2zQhTjwuK2EVn9IOCvnLSrxV3HXpHZY0qztDwqMymYrx28yY6nf89oCEzvOVrUlSbgYx8NdznTXRdVd537Oe-VPEUxqRofIyFh-N2Iihvz8ho-vKeV5oulHF81vi9koimO1AUwfHjCfP_5lcCyA6alNac-bv7rAfmAjN3jX4kv90zBvvdr6cun7olVJQ-GIIH97Uq5YUVOqJRnXcZEDqXm2MSKESMKzw"/>
+<div>
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[170px]">Herman Miller Aeron Task</div>
+<div class="font-caption text-caption text-secondary">SKU: HMA-CH-B</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">48</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$45,120.00</td>
+<td class="py-2.5 px-space-xs text-right">
+<span class="inline-block px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-caption text-caption font-semibold">38.1%</span>
+</td>
+</tr>
+<!-- Item 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs text-center font-data-mono text-data-mono font-bold text-secondary">03</td>
+<td class="py-2.5 px-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">dock</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[170px]">CalDigit TS4 Thunderbolt</div>
+<div class="font-caption text-caption text-secondary">SKU: CAL-TS4-US</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">86</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$34,314.00</td>
+<td class="py-2.5 px-space-xs text-right">
+<span class="inline-block px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-caption text-caption font-semibold">44.0%</span>
+</td>
+</tr>
+<!-- Item 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs text-center font-data-mono text-data-mono font-bold text-secondary">04</td>
+<td class="py-2.5 px-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">keyboard</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[170px]">Logitech MX Master 3S + Keys</div>
+<div class="font-caption text-caption text-secondary">SKU: LOG-MX3S-BND</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">112</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$24,640.00</td>
+<td class="py-2.5 px-space-xs text-right">
+<span class="inline-block px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-caption text-caption font-semibold">49.2%</span>
+</td>
+</tr>
+<!-- Item 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs text-center font-data-mono text-data-mono font-bold text-secondary">05</td>
+<td class="py-2.5 px-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[170px]">Zebra ZD621 Direct Thermal</div>
+<div class="font-caption text-caption text-secondary">SKU: ZEB-ZD621-4</div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">31</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$19,220.00</td>
+<td class="py-2.5 px-space-xs text-right">
+<span class="inline-block px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-caption text-caption font-semibold">27.5%</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="pt-space-xs border-t border-outline-variant/20 flex items-center justify-between text-secondary font-caption text-caption mt-space-xs">
+<span>Combined share of volume: <strong class="text-on-surface font-semibold">63.2%</strong></span>
+<button class="text-primary hover:underline font-semibold flex items-center" type="button">
+<span>View All 310 SKUs</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Right Card: Stock Health & Dead Stock Risk Analysis -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20 mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px]">warning</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Dead Stock & Capital Exposure (>90 Days)</h3>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-caption text-caption font-semibold">
+            $44.8k At Risk
+          </span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-caption text-caption uppercase">
+<th class="py-2 px-space-xs">Product</th>
+<th class="py-2 px-space-xs text-right">Idle Units</th>
+<th class="py-2 px-space-xs text-right">Tied Capital</th>
+<th class="py-2 px-space-xs text-right">Days Idle</th>
+<th class="py-2 px-space-xs text-center">Action Plan</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant/10">
+<!-- Item 1: Steelcase Gesture Old Finish -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs">
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[160px]">Steelcase Series 1 (Plum)</div>
+<div class="font-caption text-caption text-secondary">Seattle Bin #A-14</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">28</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono text-tertiary font-semibold">$12,320.00</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono text-tertiary font-bold">142 d</td>
+<td class="py-2.5 px-space-xs text-center">
+<span class="inline-block px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary font-caption text-caption font-semibold">
+                    Liquidate
+                  </span>
+</td>
+</tr>
+<!-- Item 2: Heavy Duty Strapping Units -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs">
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[160px]">Pneumatic Strapping Kit</div>
+<div class="font-caption text-caption text-secondary">Austin Depot #C-08</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">14</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$15,400.00</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-medium">118 d</td>
+<td class="py-2.5 px-space-xs text-center">
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption font-semibold">
+                    Reallocate WH
+                  </span>
+</td>
+</tr>
+<!-- Item 3: Older Generation Display Adapters -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs">
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[160px]">Belkin USB-C Gen1 Dongle</div>
+<div class="font-caption text-caption text-secondary">Denver Mezzanine #M-02</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">190</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$7,220.00</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-medium">104 d</td>
+<td class="py-2.5 px-space-xs text-center">
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-secondary font-caption text-caption font-semibold">
+                    Run Promo 25%
+                  </span>
+</td>
+</tr>
+<!-- Item 4: Industrial Poly Bags Box Sets -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs">
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[160px]">Uline 24x36 Heavy Poly</div>
+<div class="font-caption text-caption text-secondary">Seattle Bulk Yard #B-21</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">65 cs</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$5,850.00</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-medium">96 d</td>
+<td class="py-2.5 px-space-xs text-center">
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption font-semibold">
+                    Reallocate WH
+                  </span>
+</td>
+</tr>
+<!-- Item 5: Ergonomic Monitor Arms -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-xs">
+<div class="font-label-sm text-label-sm font-semibold truncate max-w-[160px]">Ergotron LX Dual Stacking</div>
+<div class="font-caption text-caption text-secondary">Austin Primary #A-02</div>
+</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono">12</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-semibold">$4,020.00</td>
+<td class="py-2.5 px-space-xs text-right font-data-mono text-data-mono font-medium">92 d</td>
+<td class="py-2.5 px-space-xs text-center">
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-secondary font-caption text-caption font-semibold">
+                    Run Promo 15%
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="pt-space-xs border-t border-outline-variant/20 flex items-center justify-between text-secondary font-caption text-caption mt-space-xs">
+<span class="flex items-center gap-space-2xs text-tertiary font-semibold">
+<span class="material-symbols-outlined text-[14px]">auto_fix_high</span> Recommended Clearance Cycle: Q4 Nov 15
+        </span>
+<button class="bg-primary text-on-primary hover:bg-primary-container px-space-sm py-1 rounded font-label-sm text-label-sm transition-colors" type="button">
+          Initiate Batch Action
+        </button>
+</div>
+</div>
+</div>
+<!-- Micro Audit Status Bar -->
+<div class="flex flex-col sm:flex-row items-center justify-between px-space-md py-space-sm bg-surface-container-lowest rounded shadow-sm text-secondary font-caption text-caption">
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-space-2xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-on-surface font-medium">Postgres Ledger: Reconciled</span>
+</span>
+<span>Calculated FIFO inventory cost valuation</span>
+<span class="font-data-mono text-data-mono">Latency: 42ms</span>
+</div>
+<div class="flex items-center gap-space-sm mt-space-2xs sm:mt-0 font-data-mono text-data-mono">
+<span>Checksum: 0x8F34_C119</span>
+<span>•</span>
+<span>Audited: Today, 14:30 CST</span>
+</div>
+</div>
+</div></main></div></body></html>
